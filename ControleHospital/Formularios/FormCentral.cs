@@ -79,11 +79,36 @@ namespace ControleHospital.Formularios
             pacienteQueVouAddNaLista.Pessoa = listaPessoas[cbxPacienteEntrada.SelectedIndex];
             pacienteQueVouAddNaLista.Doenca = listaDoencas[cbxDoencaPaciente.SelectedIndex];
             pacienteQueVouAddNaLista.DataEntrada = DateTime.Now;
-            listaPacientes.Add(pacienteQueVouAddNaLista);
+
+
+            if (PessoaJaEhPaciente(pacienteQueVouAddNaLista))
+            {
+                MessageBox.Show("Essa pessoa já é um paciente do hospital!");
+            }
+            else
+            {
+                listaPacientes.Add(pacienteQueVouAddNaLista);
+            }
+
+
 
             cbxPacienteASerMedicado.DataSource = null;
             cbxPacienteASerMedicado.DisplayMember = "NomePaciente";
             cbxPacienteASerMedicado.DataSource = listaPacientes;
+        }
+
+        private bool PessoaJaEhPaciente(Paciente pacienteQueVouProcurar)
+        {
+            Boolean ehPaciente =false;
+            for (int i = 0; i < listaPacientes.Count; i++)
+            {
+                if (listaPacientes[i].Pessoa == pacienteQueVouProcurar.Pessoa)
+                {
+                    ehPaciente = true;
+                    break;
+                }
+            }
+            return ehPaciente;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
