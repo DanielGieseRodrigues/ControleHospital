@@ -11,10 +11,17 @@ namespace ControleHospital.Classes
         public string Nome { get; set; }
         public string CID { get; set; }
         public severidade Severidade { get; set; }
+
+        public void Teste() 
+        {
+            this.Severidade = ((severidade)2);
+        }
+
     }
+
    enum severidade
     {
-        baixa ,
+        baixa,
         media,
         alta
     }

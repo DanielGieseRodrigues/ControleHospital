@@ -13,6 +13,7 @@ namespace ControleHospital.Classes
         public Medicamento Medicamento { get; set; }
         public DateTime DataEntrada { get; set; }
         public DateTime DataSaida { get; set; }
+       
 
         public string NomePaciente
         {
